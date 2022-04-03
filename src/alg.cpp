@@ -65,13 +65,13 @@ int eval(std::string pstfx) {
                 stack.push(arg1 + arg2);
                 break;
             case '-':
-                stack.push(arg1 - arg2 );
+                stack.push(arg1 - arg2);
                 break;
             case '*':
-                stack.push(arg1 * arg2 );
+                stack.push(arg1 * arg2);
                 break;
             case '/':
-                stack.push(arg1 / arg2 );
+                stack.push(arg1 / arg2);
                 break;
             }
         }
