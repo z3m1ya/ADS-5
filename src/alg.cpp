@@ -23,21 +23,21 @@ std::string infx2pstfx(std::string infx) {
                     stack.pop();
                 }
                 stack.pop();
-            } else 
-                if (ops[a] > ops[stack.get()]) {
-                stack.push(a);
-            } else 
-                if (a == '(' || stack.isEmpty()) {
-                    stack.push(a);
             } else {
-                while (ops[stack.get()] >= ops[a] && !stack.isEmpty()) {
-                    pstfx = pstfx + stack.get() + ' ';
-                    stack.pop();
-                }
-                stack.push(a);
+                if (ops[a] > ops[stack.get()]) {
+                    stack.push(a);
+                } else
+                    if (a == '(' || stack.isEmpty()) {
+                        stack.push(a);
+                    } else {
+                        while (ops[stack.get()] >= ops[a] && !stack.isEmpty()) {
+                            pstfx = pstfx + stack.get() + ' ';
+                            stack.pop();
+                        }
+                        stack.push(a);
+                    }
             }
         }
-    }
     while (!stack.isEmpty()) {
         pstfx = pstfx + stack.get() + ' ';
         stack.pop();
