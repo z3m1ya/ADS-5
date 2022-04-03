@@ -26,7 +26,7 @@ std::string infx2pstfx(std::string infx) {
             } else {
                 if (ops[a] > ops[stack.get()]) {
                     stack.push(a);
-                } else
+                } else {
                     if (a == '(' || stack.isEmpty()) {
                         stack.push(a);
                     } else {
@@ -36,6 +36,8 @@ std::string infx2pstfx(std::string infx) {
                         }
                         stack.push(a);
                     }
+                }
+                }
             }
         }
     while (!stack.isEmpty()) {
@@ -49,7 +51,7 @@ std::string infx2pstfx(std::string infx) {
 int eval(std::string pstfx) {
     TStack<int, 20> stack;
     for (char a : pstfx) {
-        if (a == ' ') 
+        if (a == ' ')
             continue;
         if (a != '-' && a != '+' && a != '*' && a != '/') {
             stack.push(a - '0');
@@ -60,16 +62,16 @@ int eval(std::string pstfx) {
             stack.pop();
             switch (a) {
             case '+':
-                stack.push( arg1 + arg2);
+                stack.push(arg1 + arg2);
                 break;
             case '-':
-                stack.push( arg1 - arg2 );
+                stack.push(arg1 - arg2 );
                 break;
             case '*':
-                stack.push( arg1 * arg2 );
+                stack.push(arg1 * arg2 );
                 break;
             case '/':
-                stack.push( arg1 / arg2 );
+                stack.push(arg1 / arg2 );
                 break;
             }
         }
