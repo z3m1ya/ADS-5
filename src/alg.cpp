@@ -16,22 +16,20 @@ std::string infx2pstfx(std::string infx) {
     for (char a : infx) {
         if (ops.find(a) == ops.end()) {
             pstfx = pstfx + a + ' ';
-        }
-        else {
+        } else {
             if (a == ')') {
                 while (stack.get() != '(') {
                     pstfx = pstfx + stack.get() + ' ';
                     stack.pop();
                 }
                 stack.pop();
-            }
-            else if (ops[a] > ops[stack.get()]) {
+            } else 
+                if (ops[a] > ops[stack.get()]) {
                 stack.push(a);
-            }
-            else if (a == '(' || stack.isEmpty()) {
-                stack.push(a);
-            }
-            else {
+            } else 
+                if (a == '(' || stack.isEmpty()) {
+                    stack.push(a);
+            } else {
                 while (ops[stack.get()] >= ops[a] && !stack.isEmpty()) {
                     pstfx = pstfx + stack.get() + ' ';
                     stack.pop();
@@ -55,8 +53,7 @@ int eval(std::string pstfx) {
             continue;
         if (a != '-' && a != '+' && a != '*' && a != '/') {
             stack.push(a - '0');
-        }
-        else {
+        } else {
             int arg2 = stack.get();
             stack.pop();
             int arg1 = stack.get();
